@@ -1,0 +1,2 @@
+find /home/ryuga/git/pystock-data/ -name prices.csv > import.sql
+cat import.sql | awk '{ printf "COPY influx.prices_import FROM %c%s%c WITH HEADER DELIMITER %c,%c CSV;\n", 39, $0, 39, 39, 39; }' > import2.sql 
